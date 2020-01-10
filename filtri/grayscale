@@ -1,8 +1,0 @@
-import cv2
-from matplotlib import pyplot as plt
-import numpy as np
-
-im_BGR = cv2.imread("Foto/colazione.jpg")
-im_BGR = cv2.cvtColor(im_BGR, cv2.COLOR_BGR2GRAY)
-plt.imshow(im_BGR, cmap='Greys_r')
-plt.show()
