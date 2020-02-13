@@ -17,16 +17,23 @@ def seppia (frame):
     #conversione da Pil a cv
     output_np = np.array(output)
     output_cv = cv2.cvtColor(output_np, cv2.COLOR_RGB2BGR)
-    return output_cv
+
+    ## shrapening filter
+    Kernel = np.array([[-1, -1, -1], [-1, 9, -1], [-1, -1, -1]])
+    output_sharpen = cv2.filter2D(output_cv, -1, Kernel)
+    return output_sharpen
+
+    return output_sharpen
 
 # lettura video
-cap = cv2.VideoCapture('video-input/video-1.mp4')
+cap = cv2.VideoCapture('video-input/video-6.mp4')
 width_frame = int(cap.get(cv2.CAP_PROP_FRAME_WIDTH))
 height_frame = int(cap.get(cv2.CAP_PROP_FRAME_HEIGHT))
 size = (width_frame,height_frame)
 # Define the codec and create VideoWriter object.The output is stored in 'outpy.avi' file.
 fourcc = cv2.VideoWriter_fourcc(*'m', 'p', '4', 'v')
 out = cv2.VideoWriter('video-output/classic-seppia.mp4', fourcc, 20.0, size)
+
 while(cap.isOpened()):
     ret, frame = cap.read()
     if ret == True:
@@ -34,7 +41,7 @@ while(cap.isOpened()):
         frame = seppia(frame)
         out.write(frame)
         cv2.imshow('Classic seppia', frame)
-        if cv2.waitKey(10) & 0xFF == ord('q'):
+        if cv2.waitKey(25) & 0xFF == ord('q'):
             break
     else:
         break

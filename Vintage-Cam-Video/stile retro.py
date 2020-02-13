@@ -19,11 +19,11 @@ def stile_retro(frame):
     return output_sherpen
 
 # lettura video
-cap = cv2.VideoCapture('video-input/video-1.mp4')
+cap = cv2.VideoCapture('video-input/video-2.mp4')
 width_frame = int(cap.get(cv2.CAP_PROP_FRAME_WIDTH))
 height_frame = int(cap.get(cv2.CAP_PROP_FRAME_HEIGHT))
 size = (width_frame,height_frame)
-# Define the codec and create VideoWriter object.The output is stored in 'outpy.avi' file.
+# Define the codec and create VideoWriter object.
 fourcc = cv2.VideoWriter_fourcc(*'m', 'p', '4', 'v')
 out = cv2.VideoWriter('video-output/stile-retro.mp4', fourcc, 20.0, size)
 while(cap.isOpened()):

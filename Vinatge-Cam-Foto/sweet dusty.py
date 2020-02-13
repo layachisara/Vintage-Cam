@@ -2,7 +2,7 @@ import cv2
 import numpy as np
 
 # read image
-input = cv2.imread('foto-input/foto-5.jpg')
+input = cv2.imread('foto-input/foto-4.jpg')
 
 # add blur
 kernel = np.ones((4,4), np.float32) / 16
